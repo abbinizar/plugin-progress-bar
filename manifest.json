@@ -1,0 +1,12 @@
+{
+  "name": "Progress Bar Builder",
+  "id": "1240508816405893449",
+  "api": "1.0.0",
+  "main": "code.js",
+  "capabilities": [],
+  "enableProposedApi": false,
+  "editorType": [
+    "figma"
+  ],
+  "ui": "ui.html"
+}

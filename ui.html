@@ -1,0 +1,45 @@
+<h2>Progress Bar Builder</h2>
+
+<div style="display: flex;">
+  <p>Value: <input id="count" value="2" type="number"></p>
+  <p>Max Lenght: <input id="max" value="5" type="number"></p>
+</div>
+
+<form>
+  <p>Please select the type:</p>
+  <input checked type="radio" id="pb2" name="age" value="full">
+  <label for="pb2">Full</label><br>
+  <input type="radio" id="pb1" name="age" value="divided">
+  <label for="pb1">Divided</label><br>
+</form>
+
+<button id="cancel">Cancel</button>
+<button id="create">Create</button>
+<script>
+
+document.getElementById('create').onclick = () => {
+  const textbox = document.getElementById('count');
+  const maxLenght = document.getElementById('max')
+  const type = document.querySelector("form")
+  
+  const data = new FormData(type);
+  let selected = "";
+  for (const entry of data) {
+    selected = `${entry[1]}`;
+  }
+   
+  const count = {
+    fill: parseInt(textbox.value, 10),
+    max: parseInt(maxLenght.value, 10)
+  };
+
+  parent.postMessage({ pluginMessage: { type: selected, count } }, '*')
+}
+
+document.getElementById('cancel').onclick = () => {
+  parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*')
+}
+
+</script>
+
+<style
