@@ -3,11 +3,11 @@
   <div class="form-input">
     <div class="container-input">
       <p>Value: </p>
-      <input class="input-number" id="count" value="2" type="number">
+      <input class="input-number" id="count" value="2" type="number" inputMode="numeric" pattern="[0-9]*" maxlength="3" oninput="this.value=this.value.slice(0,this.maxLength)">
     </div>
     <div class="container-input">
       <p>Max Length: </p>
-      <input class="input-number" id="max" value="5" type="number">
+      <input class="input-number" id="max" value="5" type="number" inputMode="numeric" pattern="[0-9]*" maxlength="3" oninput="this.value=this.value.slice(0,this.maxLength)">
     </div>
   </div>
   <form>
@@ -42,8 +42,8 @@ document.getElementById('create').onclick = () => {
   }
    
   const count = {
-    fill: parseInt(textbox.value, 10),
-    max: parseInt(maxLenght.value, 10)
+    fill: parseInt(textbox.value || 0, 10),
+    max: parseInt(maxLenght.value || 0, 10)
   };
 
   parent.postMessage({ pluginMessage: { type: selected, count } }, '*')
@@ -136,6 +136,10 @@ document.getElementById('cancel').onclick = () => {
     margin-right: 4px;
     background-color: var(--figma-color-bg-tertiary);
     color: var(--figma-color-text-invers);
+  }
+
+  .button-secondary:hover {
+    background-color: var(--figma-color-bg-hover);
   }
 
   body {
